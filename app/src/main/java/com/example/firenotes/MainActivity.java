@@ -26,6 +26,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.firenotes.auth.LoginActivity;
 import com.example.firenotes.auth.RegisterActivity;
 import com.example.firenotes.model.Adapter;
 import com.example.firenotes.model.Note;
@@ -191,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.sync:
                 if(user.isAnonymous()){
-                    startActivity(new Intent(this, RegisterActivity.class));
+                    startActivity(new Intent(this, LoginActivity.class));
                     overridePendingTransition(R.anim.slide_up,R.anim.slide_down);
                 }else {
                     Toast.makeText(this, "Your Are Connected.", Toast.LENGTH_SHORT).show();

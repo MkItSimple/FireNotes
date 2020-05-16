@@ -50,6 +50,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
+        loginAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+            }
+        });
+
         syncAccount.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -68,8 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                     rUserConfPass.setError("Password Do not Match.");
                 }
 
-                Toast.makeText(RegisterActivity.this, "Condition is passed", Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(RegisterActivity.this, "Condition is passed", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.VISIBLE);
 
                 AuthCredential credential = EmailAuthProvider.getCredential(uUserEmail,uUserPass);
