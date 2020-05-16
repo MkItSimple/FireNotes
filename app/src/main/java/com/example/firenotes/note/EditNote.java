@@ -71,7 +71,7 @@ public class EditNote extends AppCompatActivity {
                 spinner.setVisibility(View.VISIBLE);
 
                 // save note
-                DocumentReference docref = fStore.collection("notes").document(data.getStringExtra("noteId"));
+                DocumentReference docref = fStore.collection("notes").document(user.getUid()).collection("myNotes").document(data.getStringExtra("noteId"));
 
                 Map<String,Object> note = new HashMap<>();
                 note.put("title",nTitle);

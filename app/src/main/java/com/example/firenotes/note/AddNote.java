@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.firenotes.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,6 +47,8 @@ public class AddNote extends AppCompatActivity {
         noteTitle = findViewById(R.id.addNoteTitle);
         progressBarSave = findViewById(R.id.progressBar);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +65,7 @@ public class AddNote extends AppCompatActivity {
                 progressBarSave.setVisibility(View.VISIBLE);
 
                 // save note
-                DocumentReference docref = fStore.collection("notes").document();
+                DocumentReference docref = fStore.collection("notes").document(user.getUid()).collection("myNotes").document();
                 Map<String,Object> note = new HashMap<>();
                 note.put("title",nTitle);
                 note.put("content",nContent);
