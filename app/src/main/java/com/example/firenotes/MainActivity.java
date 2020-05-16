@@ -188,6 +188,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.logout:
                 checkUser();
                 break;
+
+            case R.id.sync:
+                if(user.isAnonymous()){
+                    startActivity(new Intent(this, RegisterActivity.class));
+                    overridePendingTransition(R.anim.slide_up,R.anim.slide_down);
+                }else {
+                    Toast.makeText(this, "Your Are Connected.", Toast.LENGTH_SHORT).show();
+                }
+                break;
             default:
                 Toast.makeText(this, "Coming soon.", Toast.LENGTH_SHORT).show();
         }
