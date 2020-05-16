@@ -1,5 +1,6 @@
 package com.example.firenotes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.firenotes.model.Adapter;
+import com.example.firenotes.note.AddNote;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -76,6 +78,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
         switch(item.getItemId()){
+            case R.id.addNote:
+                startActivity(new Intent(this, AddNote.class));
+                overridePendingTransition(R.anim.slide_up,R.anim.slide_down);
+                break;
             default:
                 Toast.makeText(this, "Coming soon.", Toast.LENGTH_SHORT).show();
         }
