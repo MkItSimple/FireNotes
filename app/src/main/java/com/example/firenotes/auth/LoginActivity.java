@@ -67,8 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                // delete notes first
-
+                // Delete notes first
                 if(fAuth.getCurrentUser().isAnonymous()){
                     FirebaseUser user = fAuth.getCurrentUser();
 
